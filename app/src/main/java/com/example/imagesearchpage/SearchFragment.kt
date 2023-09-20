@@ -2,12 +2,15 @@ package com.example.imagesearchpage
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imagesearchpage.databinding.FragmentSearchBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,25 +25,35 @@ private const val ARG_PARAM2 = "param2"
  */
 class SearchFragment : Fragment() {
     private lateinit var searchBinding: FragmentSearchBinding
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val dataList = mutableListOf<SearchItemModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+            dataList.add(SearchItemModel(R.drawable.sample_0,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_1,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_2,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_3,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_4,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_5,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_6,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+            dataList.add(SearchItemModel(R.drawable.sample_7,"[Image]스포츠 서울","2023-09-06 21:30:05", false))
+
+
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        searchBinding = FragmentSearchBinding.inflate(inflater,container,false)
+        val adapter = SearchAdapter(dataList)
 
+        searchBinding = FragmentSearchBinding.inflate(inflater,container,false)
+        searchBinding.searchRecyclerview.adapter = adapter
+        searchBinding.searchRecyclerview.layoutManager = GridLayoutManager(context, 2)
+        Log.d("test","datalist = $dataList")
         searchBinding.btnSearch.setOnClickListener{
             saveData()
             Toast.makeText(requireContext(), "Image Search!", Toast.LENGTH_SHORT).show()
@@ -80,4 +93,8 @@ class SearchFragment : Fragment() {
         val pref = requireContext().getSharedPreferences("pref", Activity.MODE_PRIVATE)
         searchBinding.etSearch.setText(pref.getString("name", ""))
     }
+
+
+
+
 }

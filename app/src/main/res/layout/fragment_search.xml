@@ -36,7 +36,7 @@
         android:paddingStart="8dp"
         android:inputType="textMultiLine|textNoSuggestions"
         android:hint="검색어를 입력하세요."
-        android:textSize="14dp"
+        android:textSize="15dp"
         android:ems="12"
         app:layout_constraintEnd_toStartOf="@+id/btn_search"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,6 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"

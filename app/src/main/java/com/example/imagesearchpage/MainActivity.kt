@@ -6,6 +6,7 @@ import android.text.TextUtils.replace
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imagesearchpage.databinding.ActivityMainBinding
 import com.example.imagesearchpage.databinding.FragmentSearchBinding
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         binding.apply {
             btnHome.setOnClickListener {
                 setFragment(SearchFragment())
@@ -25,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         setFragment(SearchFragment())
-
 
     }
 
