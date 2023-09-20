@@ -11,4 +11,11 @@
             android:width="150dp"
             android:height="60dp"
             />
+        <corners
+            android:radius="15dp"
+            />
+    <solid
+        android:color="#4B6EAF"
+        />
+
     </shape>
