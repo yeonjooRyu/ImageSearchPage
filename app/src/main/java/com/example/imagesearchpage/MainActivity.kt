@@ -12,13 +12,14 @@ import com.example.imagesearchpage.databinding.FragmentSearchBinding
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    var likedItems: ArrayList<SearchItemModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
 
-        binding.apply {
+        binding.run {
             btnHome.setOnClickListener {
                 setFragment(SearchFragment())
             }
@@ -37,6 +38,17 @@ class MainActivity : AppCompatActivity() {
             addToBackStack("")
         }
     }
+
+    fun addLikedItem(item: SearchItemModel) {
+        if(!likedItems.contains(item)) {
+            likedItems.add(item)
+        }
+    }
+
+    fun removeLikedItem(item: SearchItemModel) {
+        likedItems.remove(item)
+    }
+
 
 
 }
