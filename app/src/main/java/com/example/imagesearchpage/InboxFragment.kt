@@ -31,7 +31,7 @@ class InboxFragment : Fragment() {
         val mainActivity = activity as MainActivity
         inboxItems = mainActivity.likedItems
 
-        Log.d("BookmarkFragment", "#jblee likedItems size = ${inboxItems.size}")
+        Log.d("InboxFragment", "InboxItems Size = ${inboxItems.size}")
 
         inboxAdapter = InboxAdapter(inboxContext).apply {
             items = inboxItems.toMutableList()
